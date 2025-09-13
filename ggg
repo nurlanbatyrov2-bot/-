@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nurlan Design Project | Профессиональные чертежи любой сложности</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --gray: #6c757d;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header - Mobile First */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            z-index: 1001;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 999;
+            list-style: none;
+            padding: 80px 20px 40px;
+        }
+        
+        .nav-links.active {
+            left: 0;
+        }
+        
+        .nav-links li {
+            margin: 15px 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 18px;
+            display: block;
+            padding: 12px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+        }
+        
+        .menu-btn {
+            display: block;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+        
+        .phone {
+            display: none;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .phone i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 100%;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            padding: 0 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            margin: 8px 5px;
+            min-width: 200px;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(231, 76, 60, 0.4);
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Services */
+        .services {
+            padding: 70px 0;
+            background: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 18px;
+            font-size: 0.95rem;
+        }
+        
+        .service-price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        /* Portfolio */
+        .portfolio {
+            padding: 70px 0;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 80, 0.85);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: var(--transition);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Order Form Section */
+        .order {
+            padding: 70px 0;
+            background: var(--light);
+        }
+        
+        .order-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .order-info {
+            padding-right: 0;
+        }
+        
+        .order-info h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+        
+        .order-info p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .order-benefits {
+            list-style: none;
+            margin-top: 25px;
+        }
+        
+        .order-benefits li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .order-benefits i {
+            color: var(--secondary);
+            margin-right: 12px;
+            font-size: 16px;
+            min-width: 20px;
+        }
+        
+        .order-form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 18px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 15px;
+            transition: var(--transition);
+            font-family: inherit;
+            -webkit-appearance: none;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        
+        .required:after {
+            content: '*';
+            color: var(--secondary);
+            margin-left: 3px;
+        }
+        
+        .form-notice {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 18px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .success-message i {
+            font-size: 50px;
+            color: #27ae60;
+            margin-bottom: 18px;
+        }
+        
+        .success-message h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .success-message p {
+            margin-bottom: 10px;
+            color: var(--gray);
+        }
+        
+        /* About */
+        .about {
+            padding: 70px 0;
+            background: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 18px;
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+        
+        .stat-text {
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Process */
+        .process {
+            padding: 70px 0;
+            background: var(--light);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 26px;
+            color: var(--accent);
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+        
+        .step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .step p {
+            color: var(--gray);
+            max-width: 100%;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+        
+        /* CTA */
+        .cta {
+            padding: 70px 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 18px;
+        }
+        
+        .cta p {
+            max-width: 100%;
+            margin: 0 auto 30px;
+            font-size: 1rem;
+            opacity: 0.9;
+            padding: 0 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-social {
+            display: flex;
+            margin-top: 18px;
+            justify-content: center;
+        }
+        
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 6px;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .footer-social a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+            color: #ccc;
+        }
+        
+        /* Mobile Menu Animation */
+        .menu-btn i {
+            transition: var(--transition);
+        }
+        
+        .menu-btn.active i {
+            transform: rotate(90deg);
+        }
+        
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 80%;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .btn {
+                min-width: 220px;
+            }
+        }
+        
+        /* Desktop Styles */
+        @media (min-width: 992px) {
+            .menu-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                position: static;
+                flex-direction: row;
+                height: auto;
+                width: auto;
+                background: transparent;
+                padding: 0;
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0 0 0 25px;
+                width: auto;
+            }
+            
+            .nav-links a {
+                color: var(--dark);
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+            
+            .nav-links a:hover {
+                background: transparent;
+                color: var(--secondary);
+            }
+            
+            .phone {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 160px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .services {
+                padding: 100px 0;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .portfolio {
+                padding: 100px 0;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .order {
+                padding: 100px 0;
+            }
+            
+            .order-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+            }
+            
+            .order-info {
+                padding-right: 30px;
+            }
+            
+            .about {
+                padding: 100px 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 50px;
+            }
+            
+            .process {
+                padding: 100px 0;
+            }
+            
+            .process-steps {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .cta {
+                padding: 100px 0;
+            }
+            
+            .cta h2 {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 40px;
+            }
+            
+            .footer-social {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .container {
+                padding: 0;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) {
+            .service-card:hover {
+                transform: none;
+            }
+            
+            .portfolio-overlay {
+                opacity: 1;
+                background: rgba(44, 62, 80, 0.7);
+            }
+            
+            .btn:hover {
+                transform: none;
+            }
+        }
+        
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <i class="fas fa-drafting-compass"></i> Nurlan <span>Design </span>Project </span>
+                </a>
+                
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#order">Заказать</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#process">Как работаем</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+                
+                <div class="phone">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+79022470205">+7 (902) 247-02-05</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Профессиональные чертежи любой сложности</h1>
+            <p>От технических схем до архитектурных планов. Реализуем ваши идеи в точных и детализированных чертежах с гарантией качества.</p>
+            <div>
+                <a href="#order" class="btn btn-primary">Заказать чертеж</a>
+                <a href="#portfolio" class="btn btn-outline">Примеры работ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши услуги</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Архитектурные чертежи">
+                    </div>
+                    <div class="service-content">
+                        <h3>Архитектурные чертежи</h3>
+                        <p>Разработка планов зданий, фасадов, разрезов с соблюдением всех нормативов и требований.</p>
+                        <div class="service-price">от 5 000 руб.</div>
+                        <a href="#order" class="btn btn-primary">Заказать</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Технические чертежи">
+                    </div>
+                    <div class="service-content">
+                        <h3>Технические чертежи</h3>
+                        <p>Создание точных технических чертежей деталей, механизмов и оборудования.</p>
+                        <div class="service-price">от 3 000 руб.</div>
+                        <a href="#order" class="btn btn-primary">Заказать</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Инженерные схемы">
+                    </div>
+                    <div class="service-content">
+                        <h3>Инженерные схемы</h3>
+                        <p>Разработка электрических, сантехнических и других инженерных схем для строительства.</p>
+                        <div class="service-price">от 4 000 руб.</div>
+                        <a href="#order" class="btn btn-primary">Заказать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши работы</h2>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Архитектурный проект">
+                    <div class="portfolio-overlay">
+                        <h3>Архитектурный проект дома</h3>
+                        <a href="#order" class="btn btn-outline">Заказать类似</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Технический чертеж">
+                    <div class="portfolio-overlay">
+                        <h3>Технический чертеж механизма</h3>
+                        <a href="#order" class="btn btn-outline">Заказать类似</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Инженерная схема">
+                    <div class="portfolio-overlay">
+                        <h3>Инженерная схема здания</h3>
+                        <a href="#order" class="btn btn-outline">Заказать类似</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order" id="order">
+        <div class="container">
+            <div class="section-title">
+                <h2>Заказать чертеж</h2>
+            </div>
+            
+            <div class="order-container">
+                <div class="order-info">
+                    <h2>Оставьте заявку</h2>
+                    <p>Заполните форму справа, и наш специалист свяжется с вами для уточнения деталей и расчета стоимости.</p>
+                    
+                    <ul class="order-benefits">
+                        <li><i class="fas fa-check-circle"></i> Консультация</li>
+                        <li><i class="fas fa-check-circle"></i> Расчет стоимости</li>
+                        <li><i class="fas fa-check-circle"></i> 10% за каждого приведенного человека</li>
+                        <li><i class="fas fa-check-circle"></i> Гарантия качества и соблюдения сроков</li>
+                    </ul>
+                </div>
+                
+                <div class="order-form-container">
+                    <form id="orderForm" class="order-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="required">ФИО</label>
+                                <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="required">Телефон</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 999-99-99">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service" class="required">Тип услуги</label>
+                            <select id="service" name="service" required>
+                                <option value="">Выберите тип чертежа</option>
+                                <option value="Архитектурные чертежи">Архитектурные чертежи</option>
+                                <option value="Технические чертежи">Технические чертежи</option>
+                                <option value="Инженерные схемы">Инженерные схемы</option>
+                                <option value="3D-моделирование">3D-моделирование</option>
+                                <option value="Дизайн интерьеров">Дизайн интерьеров</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="details" class="required">Подробности заказа</label>
+                            <textarea id="details" name="details" required placeholder="Опишите детали вашего проекта, укажите сроки и особые требования..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="comment">Комментарий (необязательно)</label>
+                            <textarea id="comment" name="comment" placeholder="Дополнительная информация, которая может быть полезна..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                        
+                        <p class="form-notice">Нажимая на кнопку, вы соглашаетесь с обработкой персональных данных</p>
+                    </form>
+                    
+                    <div id="successMessage" class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Заявка успешно отправлена!</h3>
+                        <p>Наш специалист свяжется с вами для уточнения деталей.</p>
+                        <p>Номер вашей заявки: <strong>#<span id="orderNumber"></span></strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>О нашей компании</h2>
+                    <p>Nurlan Design Project - это команда профессиональных инженеров, специализирующихся на создании чертежей любой сложности. Мы работаем с 2020 года и успешно реализовали более 500 проектов.</p>
+                    <p>Наша миссия - предоставлять клиентам качественные и точные чертежи, которые помогают реализовывать их проекты в жизнь.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-text">Выполненных проектов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-text">Постоянных клиентов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-text">Лет опыта</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">Гарантия качества</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="О компании">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Как мы работаем</h2>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">1</div>
+                    <h3>Заявка</h3>
+                    <p>Оставляете заявку на сайте или по телефону</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">2</div>
+                    <h3>Консультация</h3>
+                    <p>Обсуждаем детали и заключаем договор</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">3</div>
+                    <h3>Выполнение</h3>
+                    <p>Разрабатываем чертеж согласно требованиям</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">4</div>
+                    <h3>Результат</h3>
+                    <p>Предоставляем готовый проект в нужном формате</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contacts">
+        <div class="container">
+            <h2>Готовы начать проект?</h2>
+            <p>Свяжитесь с нами сегодня для бесплатной консультации и расчета стоимости вашего чертежа</p>
+            <a href="tel:+79022470205" class="btn btn-primary">Позвонить нам</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Nurlan Design Project</h3>
+                    <p>Профессиональная студия чертежей с многолетним опытом работы над проектами любой сложности.</p>
+                    <div class="footer-social">
+                        <a href="https://vk.ru/nurik__777"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Архитектурные чертежи</a></li>
+                        <li><a href="#">Технические чертежи</a></li>
+                        <li><a href="#">Инженерные схемы</a></li>
+                        <li><a href="#">3D-моделирование</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Оренбург, ул. Рокоссовского,25</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+79022470205">+7 (902) 247-02-05</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:Nurlan26092003@gmail.com">Nurlan26092003@gmail.com</a></li>
+                        <li><i class="fas fa-clock"></i> Пн-Вс: 7:00 - 00:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nurlan Design Project. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+            
+            // Change icon
+            const icon = menuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('active');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Order Form Handling
+        const orderForm = document.getElementById('orderForm');
+        const successMessage = document.getElementById('successMessage');
+        const orderNumber = document.getElementById('orderNumber');
+
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic validation
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const details = document.getElementById('details').value;
+            
+            if (!name || !phone || !email || !service || !details) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Пожалуйста, введите корректный email адрес');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phonePattern = /^(\+7|8)[\d\s\-\(\)]{10,}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Пожалуйста, введите корректный номер телефона');
+                return;
+            }
+            
+            // Generate random order number
+            const randomOrderNumber = Math.floor(100000 + Math.random() * 900000);
+            orderNumber.textContent = randomOrderNumber;
+            
+            // Show success message, hide form
+            orderForm.style.display = 'none';
+            successMessage.style.display = 'block';
+            
+            // Here you would normally send the data to your server
+            console.log('Order submitted:', {
+                name,
+                phone,
+                email,
+                service,
+                details,
+                comment: document.getElementById('comment').value,
+                orderNumber: randomOrderNumber
+            });
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Phone input mask
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.startsWith('7') || value.startsWith('8')) {
+                value = value.substring(1);
+            }
+            if (value.length > 0) {
+                value = '+7 (' + value;
+                if (value.length > 7) value = value.substring(0, 7) + ') ' + value.substring(7);
+                if (value.length > 12) value = value.substring(0, 12) + '-' + value.substring(12);
+                if (value.length > 15) value = value.substring(0, 15) + '-' + value.substring(15);
+            }
+            e.target.value = value;
+        });
+        
+        // Prevent zoom on input focus on mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                document.querySelectorAll('input, textarea, select').forEach(el => {
+                    el.addEventListener('focus', function() {
+                        window.scrollTo(0, 0);
+                        document.body.style.zoom = 1.0;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
